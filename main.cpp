@@ -22,7 +22,8 @@ void setTimeout(PFunc p, int second) {
 	p(&second);
 }
 
-int main() {
+int main(int argc, const char* argv[]) {
+
 	int dice;
 	int s;
 
@@ -37,14 +38,17 @@ int main() {
 	printf("サイコロのデメがハンかチョウかをニュウリョクしてください\n");
 	printf("1がハン, 2がチョウ: ");
 	scanf_s("%d", &s);
+	auto fx = [=](int i) { return s; };
 
 	// 3秒後に結果を表示
 	setTimeout(DispResult, 3);
 
 	// 回答を判定
 	if ((dice == 1 && s == 2) || (dice == 2 && s == 1)) {
+		printf("ニュウリョクされたのは%d\n", fx(2));
 		printf("セイカイ\n");
 	} else {
+		printf("ニュウリョクされたのは%d\n", fx(2));
 		printf("フセイカイ\n");
 	}
 
