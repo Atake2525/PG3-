@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <time.h>
 #include <stdlib.h>
-
+#include <functional>
 
 
 typedef void (*PFunc)(int*);
@@ -38,7 +38,7 @@ int main(int argc, const char* argv[]) {
 	printf("サイコロのデメがハンかチョウかをニュウリョクしてください\n");
 	printf("1がハン, 2がチョウ: ");
 	scanf_s("%d", &s);
-	auto fx = [=](int i) { return s; };
+	std::function<int(int)> fx = [=](int i) { return s; };
 
 	// 3秒後に結果を表示
 	setTimeout(DispResult, 3);
